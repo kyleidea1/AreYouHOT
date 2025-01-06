@@ -35,8 +35,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.areyouhot.ui.theme.Divider
-import com.example.areyouhot.ui.theme.TopBar
+import com.example.areyouhot.view.theme.Divider
+import com.example.areyouhot.view.theme.MainRed
+import com.example.areyouhot.view.theme.TopBar
 
 @Composable
 fun MyPageActivity() {
@@ -190,7 +191,7 @@ private fun CustomLinearProgressBar(){
                 .padding(0.dp, 5.dp),
             progress = 0.7f,
             trackColor = Color.LightGray,
-            color = Color.Red //progress color
+            color = MainRed //progress color
         )
     }
 }
