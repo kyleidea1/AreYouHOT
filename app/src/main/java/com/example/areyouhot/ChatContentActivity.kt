@@ -29,6 +29,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.areyouhot.view.theme.Divider
+import com.example.areyouhot.view.theme.MainRed
 
 data class Message(
     val id: Int,
@@ -163,7 +164,7 @@ fun MessageItem(message: Message) {
         Spacer(modifier = Modifier.padding(4.dp))
         Column(
             modifier = Modifier
-                .background(color = if (message.isMine) Color.Red else Color.White)
+                .background(color = if (message.isMine) MainRed else Color.White)
                 .padding(12.dp)
         ) {
             Text(message.content, color = if (message.isMine) Color.White else Color.Black)
