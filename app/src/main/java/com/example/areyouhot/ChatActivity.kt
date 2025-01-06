@@ -63,26 +63,14 @@ fun ChatList() {
             contentType = { index -> chatData[index] }
         ) { index ->
             val chat = chatData[index]
-            ChatListItem(
-                chatUserName = chat.userName,
-                chatUserImage = chat.userImage,
-                chatDate = chat.date,
-                chatContent = chat.content,
-                chatUserInfo = chat.userInfo,
-            )
+            ChatListItem(chat)
             Divider(1f)
         }
     }
 }
 
 @Composable
-private fun ChatListItem(
-    chatUserImage: Int,
-    chatUserName: String,
-    chatUserInfo: String,
-    chatDate: String,
-    chatContent: String
-) {
+private fun ChatListItem(chatListData: ChatData) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -96,8 +84,8 @@ private fun ChatListItem(
                 .aspectRatio(1f)
         ) {
             Image(
-                painter = painterResource(id = chatUserImage),
-                contentDescription = chatUserName + "Profile",
+                painter = painterResource(id = chatListData.userImage),
+                contentDescription = chatListData.userName + "Profile",
                 modifier = Modifier.fillMaxSize()
             )
         }
@@ -112,13 +100,13 @@ private fun ChatListItem(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(chatUserName, fontSize = 20.sp)
-                Text(chatUserInfo, modifier = Modifier.padding(8.dp, 0.dp), fontSize = 12.sp, color = Color.Gray)
-                Text(chatDate, fontSize = 12.sp, color = Color.Gray)
+                Text(chatListData.userName, fontSize = 20.sp)
+                Text(chatListData.userInfo, modifier = Modifier.padding(8.dp, 0.dp), fontSize = 12.sp, color = Color.Gray)
+                Text(chatListData.date, fontSize = 12.sp, color = Color.Gray)
 
             }
             Spacer(modifier = Modifier.padding(5.dp))
-            Text(chatContent, modifier = Modifier.fillMaxWidth(), fontSize = 15.sp)
+            Text(chatListData.content, modifier = Modifier.fillMaxWidth(), fontSize = 15.sp)
         }
     }
 }
