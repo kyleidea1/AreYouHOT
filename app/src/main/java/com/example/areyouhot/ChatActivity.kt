@@ -23,8 +23,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.areyouhot.ui.theme.Divider
-import com.example.areyouhot.ui.theme.TopBar
+import com.example.areyouhot.view.theme.Divider
+import com.example.areyouhot.view.theme.TopBar
 
 data class ChatData(
     val userName: String,
