@@ -35,40 +35,21 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.areyouhot.view.theme.Divider
+import com.example.areyouhot.ui.theme.Divider
+import com.example.areyouhot.ui.theme.TopBar
 
 @Composable
 fun MyPageActivity() {
     Box(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier.fillMaxSize()) {
-            MyPageTopBar(title = "나의 당근", icon = Icons.Outlined.Settings)
+            TopBar(title = "나의 당근", icon = Icons.Outlined.Settings)
             Divider(1)
             Column(modifier = Modifier.fillMaxWidth().padding(12.dp)) {
                 Column(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Row(modifier = Modifier.fillMaxWidth().aspectRatio(4f)) {
-                        IconButton(
-                            onClick = {},
-                            modifier = Modifier.fillMaxHeight().aspectRatio(1f)
-                        ) {
-                            Image(
-                                painter = painterResource(id = R.drawable.sample),
-                                contentDescription = "profile",
-                                modifier = Modifier.fillMaxSize()
-                            )
-                        }
-                        Column(
-                            modifier = Modifier.fillMaxHeight().padding(8.dp),
-                            horizontalAlignment = Alignment.Start,
-                            verticalArrangement = Arrangement.Center
-                        ) {
-                            Text("WWIT", modifier = Modifier.fillMaxWidth(), fontSize = 25.sp)
-                            Spacer(modifier = Modifier.padding(5.dp))
-                            Text("역삼동 #18", modifier = Modifier.fillMaxWidth(), fontSize = 15.sp)
-                        }
-                    }
+                    Profile(userImage = R.drawable.sample, userName = "WWITT", userInfo = "역삼동 # 17")
                     Column(
                         modifier = Modifier.fillMaxWidth().border(width = 1.dp, color = Color.LightGray).clickable {  }.padding(40.dp, 10.dp),
                         horizontalAlignment = Alignment.CenterHorizontally
@@ -116,6 +97,38 @@ fun MyPageActivity() {
 }
 
 @Composable
+private fun Profile(userImage: Int, userName: String, userInfo: String) {
+    Row(modifier = Modifier
+        .fillMaxWidth()
+        .aspectRatio(4f)
+        .padding(10.dp)) {
+        IconButton(
+            onClick = {},
+            modifier = Modifier
+                .fillMaxHeight()
+                .aspectRatio(1f)
+        ) {
+            Image(
+                painter = painterResource(id = userImage),
+                contentDescription = userName+"Profile",
+                modifier = Modifier.fillMaxSize()
+            )
+        }
+        Column(
+            modifier = Modifier
+                .fillMaxHeight()
+                .padding(8.dp),
+            horizontalAlignment = Alignment.Start,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text(userName, modifier = Modifier.fillMaxWidth(), fontSize = 20.sp)
+            Spacer(modifier = Modifier.padding(5.dp))
+            Text(userInfo, modifier = Modifier.fillMaxWidth(), fontSize = 15.sp)
+        }
+    }
+}
+
+@Composable
 private fun TierItemValue(listName: String, listValue: Int) {
     Row(
         modifier = Modifier.fillMaxWidth(),
@@ -125,21 +138,6 @@ private fun TierItemValue(listName: String, listValue: Int) {
         Text(text = listName)
         Spacer(modifier = Modifier.padding(2.dp))
         Text(text = listValue.toString())
-    }
-}
-
-@Composable
-private fun MyPageTopBar(title: String, icon: ImageVector) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .aspectRatio(7f)
-            .padding(horizontal = 12.dp, vertical = 9.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
-    ) {
-        Text(title)
-        Icon(imageVector = icon, contentDescription = icon.name)
     }
 }
 
