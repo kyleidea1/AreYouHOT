@@ -27,6 +27,14 @@ import androidx.compose.ui.unit.dp
 import com.example.areyouhot.R
 
 @Composable
+fun Divider(height: Float) {
+    Box(modifier = Modifier
+        .fillMaxWidth()
+        .height(height.dp)
+        .background(Color.LightGray))
+}
+
+@Composable
 fun Divider(height: Int) {
     Box(modifier = Modifier
         .fillMaxWidth()

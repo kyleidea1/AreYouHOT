@@ -43,7 +43,7 @@ fun MyPageActivity() {
     Box(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier.fillMaxSize()) {
             TopBar(title = "나의 당근", icon = Icons.Outlined.Settings)
-            Divider(1)
+            Divider(2f)
             Column(modifier = Modifier.fillMaxWidth().padding(12.dp)) {
                 Column(
                     modifier = Modifier.fillMaxWidth(),
@@ -84,12 +84,12 @@ fun MyPageActivity() {
                     NavigationIconColumn(text = "간 보는 중", drawable = R.drawable.sample)
                 }
             }
-            Divider(8)
+            Divider(8f)
             NavigateIconRow("내 동네 설정", Icons.Outlined.Place)
             NavigateIconRow("동네 인증하기", Icons.Outlined.AddCircle)
             NavigateIconRow("키워드 알림", Icons.Outlined.Notifications)
             NavigateIconRow("모아보기", Icons.Outlined.Home)
-            Divider(8)
+            Divider(8f)
             NavigateIconRow("동네생활 글", Icons.Outlined.Create)
             NavigateIconRow("동네생활 댓글", Icons.Outlined.ThumbUp)
         }
