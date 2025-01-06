@@ -76,7 +76,7 @@ fun TopBar(title: String, icon: ImageVector? = null) {
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        Text(title)
+        Text(title, style = Typography.titleLarge)
         if (icon != null) {
             Icon(imageVector = icon, contentDescription = icon.name)
         }

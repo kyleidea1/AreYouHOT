@@ -38,6 +38,7 @@ import androidx.compose.ui.unit.sp
 import com.example.areyouhot.view.theme.Divider
 import com.example.areyouhot.view.theme.MainRed
 import com.example.areyouhot.view.theme.TopBar
+import com.example.areyouhot.view.theme.Typography
 
 @Composable
 fun MyPageActivity() {
@@ -122,9 +123,9 @@ private fun Profile(userImage: Int, userName: String, userInfo: String) {
             horizontalAlignment = Alignment.Start,
             verticalArrangement = Arrangement.Center
         ) {
-            Text(userName, modifier = Modifier.fillMaxWidth(), fontSize = 20.sp)
+            Text(userName, modifier = Modifier.fillMaxWidth(), style = Typography.titleMedium)
             Spacer(modifier = Modifier.padding(5.dp))
-            Text(userInfo, modifier = Modifier.fillMaxWidth(), fontSize = 15.sp)
+            Text(userInfo, modifier = Modifier.fillMaxWidth(), style = Typography.titleSmall)
         }
     }
 }
@@ -136,9 +137,9 @@ private fun TierItemValue(listName: String, listValue: Int) {
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        Text(text = listName)
+        Text(text = listName, style = Typography.titleSmall)
         Spacer(modifier = Modifier.padding(2.dp))
-        Text(text = listValue.toString())
+        Text(text = listValue.toString(), style = Typography.bodySmall)
     }
 }
 
@@ -158,7 +159,7 @@ private fun NavigationIconColumn(text: String, drawable: Int) {
                 modifier = Modifier.fillMaxSize()
             )
         }
-        Text(text)
+        Text(text, style = Typography.titleMedium)
     }
 }
 
@@ -177,7 +178,7 @@ private fun NavigateIconRow(text: String, icon: ImageVector) {
                 .aspectRatio(1f)
                 .padding(5.dp)
         )
-        Text(text, modifier = Modifier.padding(5.dp))
+        Text(text, modifier = Modifier.padding(5.dp), style = Typography.titleSmall)
     }
 }
 

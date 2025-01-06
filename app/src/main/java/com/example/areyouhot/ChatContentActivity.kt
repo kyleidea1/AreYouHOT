@@ -30,6 +30,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.areyouhot.view.theme.Divider
 import com.example.areyouhot.view.theme.MainRed
+import com.example.areyouhot.view.theme.Typography
 
 data class Message(
     val id: Int,
@@ -64,8 +65,8 @@ fun ChatContentActivity() {
                             modifier = Modifier.fillMaxHeight(),
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
-                            Text("코리안좀비")
-                            Text("골드 3", color = Color.Gray)
+                            Text("코리안좀비", style = Typography.titleMedium)
+                            Text("골드 3", style = Typography.titleSmall, color = Color.Gray)
                         }
                         Row() {
                             Icon(imageVector = Icons.Outlined.DateRange, contentDescription = "dateRange")
@@ -85,7 +86,7 @@ fun ChatContentActivity() {
                 OutlinedTextField(
                     value = "",
                     onValueChange = { },
-                    label = { Text("None") }
+                    label = { Text("메시지 입력", style = Typography.bodyLarge) }
                 )
                 Icon(imageVector = Icons.Outlined.Send, contentDescription = "send")
             }
@@ -160,17 +161,17 @@ fun MessageItem(message: Message) {
         horizontalArrangement = if (message.isMine) Arrangement.End else Arrangement.Start,
         verticalAlignment = Alignment.Bottom
     ) {
-        if (message.isMine) Text(message.timestamp, color = Color.Gray)
+        if (message.isMine) Text(message.timestamp, style = Typography.bodySmall, color = Color.Gray)
         Spacer(modifier = Modifier.padding(4.dp))
         Column(
             modifier = Modifier
                 .background(color = if (message.isMine) MainRed else Color.White)
                 .padding(12.dp)
         ) {
-            Text(message.content, color = if (message.isMine) Color.White else Color.Black)
+            Text(message.content, style = Typography.bodyLarge, color = if (message.isMine) Color.White else Color.Black)
         }
         Spacer(modifier = Modifier.padding(4.dp))
-        if (!message.isMine) Text(message.timestamp, color = Color.Gray)
+        if (!message.isMine) Text(message.timestamp, style = Typography.bodySmall, color = Color.Gray)
     }
 }
 

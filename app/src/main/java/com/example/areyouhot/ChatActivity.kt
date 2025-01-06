@@ -18,13 +18,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.modifier.modifierLocalMapOf
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.areyouhot.view.theme.Divider
 import com.example.areyouhot.view.theme.TopBar
+import com.example.areyouhot.view.theme.Typography
 
 data class ChatData(
     val userName: String,
@@ -100,13 +99,13 @@ private fun ChatListItem(chatListData: ChatData) {
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(chatListData.userName, fontSize = 20.sp)
-                Text(chatListData.userInfo, modifier = Modifier.padding(8.dp, 0.dp), fontSize = 12.sp, color = Color.Gray)
-                Text(chatListData.date, fontSize = 12.sp, color = Color.Gray)
+                Text(chatListData.userName, style = Typography.bodyLarge)
+                Text(chatListData.userInfo, modifier = Modifier.padding(8.dp, 0.dp), style = Typography.bodySmall, color = Color.Gray)
+                Text(chatListData.date, style = Typography.bodySmall, color = Color.Gray)
 
             }
             Spacer(modifier = Modifier.padding(5.dp))
-            Text(chatListData.content, modifier = Modifier.fillMaxWidth(), fontSize = 15.sp)
+            Text(chatListData.content, modifier = Modifier.fillMaxWidth(), style = Typography.bodyMedium)
         }
     }
 }
