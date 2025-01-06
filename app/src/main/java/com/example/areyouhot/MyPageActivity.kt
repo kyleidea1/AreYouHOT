@@ -90,65 +90,40 @@ fun MyPageActivity() {
                     horizontalArrangement = Arrangement.SpaceEvenly,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Column(
-                        modifier = Modifier.fillMaxHeight(),
-                        verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        IconButton(
-                            onClick = {}
-                        ) {
-                            Image(
-                                painter = painterResource(id = R.drawable.sample),
-                                contentDescription = "profile",
-                                modifier = Modifier.fillMaxSize()
-                            )
-                        }
-                        Text("판매내역")
-                    }
-                    Column(
-                        modifier = Modifier.fillMaxHeight(),
-                        verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        IconButton(
-                            onClick = {}
-                        ) {
-                            Image(
-                                painter = painterResource(id = R.drawable.sample),
-                                contentDescription = "profile",
-                                modifier = Modifier.fillMaxSize()
-                            )
-                        }
-                        Text("구매내역")
-                    }
-                    Column(
-                        modifier = Modifier.fillMaxHeight(),
-                        verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        IconButton(
-                            onClick = {}
-                        ) {
-                            Image(
-                                painter = painterResource(id = R.drawable.sample),
-                                contentDescription = "profile",
-                                modifier = Modifier.fillMaxSize()
-                            )
-                        }
-                        Text("관심목록")
-                    }
+                    NavigationIconColumn(text = "판매내역", drawable = R.drawable.sample)
+                    NavigationIconColumn(text = "구매내역", drawable = R.drawable.sample)
+                    NavigationIconColumn(text = "관심목록", drawable = R.drawable.sample)
                 }
             }
             Divider(8)
-            NavigateIconButton("내 동네 설정", Icons.Outlined.Place)
-            NavigateIconButton("동네 인증하기", Icons.Outlined.AddCircle)
-            NavigateIconButton("키워드 알림", Icons.Outlined.Notifications)
-            NavigateIconButton("모아보기", Icons.Outlined.Home)
+            NavigateIconRow("내 동네 설정", Icons.Outlined.Place)
+            NavigateIconRow("동네 인증하기", Icons.Outlined.AddCircle)
+            NavigateIconRow("키워드 알림", Icons.Outlined.Notifications)
+            NavigateIconRow("모아보기", Icons.Outlined.Home)
             Divider(8)
-            NavigateIconButton("동네생활 글", Icons.Outlined.Create)
-            NavigateIconButton("동네생활 댓글", Icons.Outlined.ThumbUp)
+            NavigateIconRow("동네생활 글", Icons.Outlined.Create)
+            NavigateIconRow("동네생활 댓글", Icons.Outlined.ThumbUp)
         }
+    }
+}
+
+@Composable
+private fun NavigationIconColumn(text: String, drawable: Int) {
+    Column(
+        modifier = Modifier.fillMaxHeight(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        IconButton(
+            onClick = {}
+        ) {
+            Image(
+                painter = painterResource(id = drawable),
+                contentDescription = text,
+                modifier = Modifier.fillMaxSize()
+            )
+        }
+        Text(text)
     }
 }
 
@@ -161,7 +136,7 @@ private fun Divider(height: Int) {
 }
 
 @Composable
-private fun NavigateIconButton(text: String, icon: ImageVector) {
+private fun NavigateIconRow(text: String, icon: ImageVector) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -170,7 +145,7 @@ private fun NavigateIconButton(text: String, icon: ImageVector) {
     ) {
         Icon(
             imageVector = icon,
-            contentDescription = icon.name,
+            contentDescription = text,
             modifier = Modifier
                 .aspectRatio(1f)
                 .padding(5.dp)
