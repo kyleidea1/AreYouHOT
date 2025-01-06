@@ -26,6 +26,7 @@ import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.LocationOn
 import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material.icons.outlined.Place
+import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.ThumbUp
 import androidx.compose.material.icons.outlined.Warning
 import androidx.compose.material3.Icon
@@ -47,13 +48,7 @@ import androidx.compose.ui.unit.sp
 fun MyPageActivity() {
     Box(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier.fillMaxSize()) {
-            Row(modifier = Modifier.fillMaxWidth().aspectRatio(7f).padding(horizontal = 12.dp, vertical = 9.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Text("나의 당근")
-                Icon(imageVector = Icons.Default.Settings, contentDescription = "settings")
-            }
+            MyPageTopBar(text = "나의 당근", icon = Icons.Outlined.Settings)
             Divider(1)
             Column(modifier = Modifier.fillMaxWidth().padding(12.dp)) {
                 Column(
@@ -104,6 +99,21 @@ fun MyPageActivity() {
             NavigateIconRow("동네생활 글", Icons.Outlined.Create)
             NavigateIconRow("동네생활 댓글", Icons.Outlined.ThumbUp)
         }
+    }
+}
+
+@Composable
+private fun MyPageTopBar(title: String, icon: ImageVector) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .aspectRatio(7f)
+            .padding(horizontal = 12.dp, vertical = 9.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Text(title)
+        Icon(imageVector = icon, contentDescription = icon.name)
     }
 }
 
