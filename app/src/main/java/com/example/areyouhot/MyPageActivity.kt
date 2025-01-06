@@ -1,7 +1,9 @@
 package com.example.areyouhot
 
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -16,21 +18,17 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.filled.LocationOn
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.outlined.AddCircle
-import androidx.compose.material.icons.outlined.Call
 import androidx.compose.material.icons.outlined.Create
 import androidx.compose.material.icons.outlined.Home
-import androidx.compose.material.icons.outlined.LocationOn
 import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material.icons.outlined.Place
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.ThumbUp
-import androidx.compose.material.icons.outlined.Warning
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -43,6 +41,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.areyouhot.ui.theme.Divider
 
 @Composable
 fun MyPageActivity() {
@@ -76,18 +75,39 @@ fun MyPageActivity() {
                             Text("역삼동 #18", modifier = Modifier.fillMaxWidth(), fontSize = 15.sp)
                         }
                     }
-                    Box(modifier = Modifier.fillMaxWidth().aspectRatio(7f).border(width = 1.dp, color = Color.LightGray).clickable {  }, contentAlignment = Alignment.Center) {
-                        Text("프로필 보기", textAlign = TextAlign.Center, fontWeight = FontWeight.Bold)
+                    Column(
+                        modifier = Modifier.fillMaxWidth().border(width = 1.dp, color = Color.LightGray).clickable {  }.padding(40.dp, 10.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Row() {
+                            Image(
+                                painter = painterResource(id = R.drawable.sample),
+                                contentDescription = "tier",
+                                modifier = Modifier.height(100.dp).aspectRatio(1f)
+                            )
+                            Column(
+                                modifier = Modifier.fillMaxWidth().height(100.dp).padding(30.dp, 0.dp),
+                                verticalArrangement = Arrangement.SpaceEvenly
+                            ) {
+
+                                TierItemValue("승리", 120)
+                                TierItemValue("패배", 78)
+                                TierItemValue("LP", 1207)
+
+                            }
+                        }
+                        CustomLinearProgressBar()
                     }
+
                 }
                 Row(
                     modifier = Modifier.fillMaxWidth().aspectRatio(3f),
                     horizontalArrangement = Arrangement.SpaceEvenly,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    NavigationIconColumn(text = "판매내역", drawable = R.drawable.sample)
-                    NavigationIconColumn(text = "구매내역", drawable = R.drawable.sample)
-                    NavigationIconColumn(text = "관심목록", drawable = R.drawable.sample)
+                    NavigationIconColumn(text = "무찌른 자", drawable = R.drawable.sample)
+                    NavigationIconColumn(text = "복수할 자", drawable = R.drawable.sample)
+                    NavigationIconColumn(text = "간 보는 중", drawable = R.drawable.sample)
                 }
             }
             Divider(8)
@@ -99,6 +119,19 @@ fun MyPageActivity() {
             NavigateIconRow("동네생활 글", Icons.Outlined.Create)
             NavigateIconRow("동네생활 댓글", Icons.Outlined.ThumbUp)
         }
+    }
+}
+
+@Composable
+private fun TierItemValue(listName: String, listValue: Int) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Text(text = listName)
+        Spacer(modifier = Modifier.padding(2.dp))
+        Text(text = listValue.toString())
     }
 }
 
@@ -138,14 +171,6 @@ private fun NavigationIconColumn(text: String, drawable: Int) {
 }
 
 @Composable
-private fun Divider(height: Int) {
-    Box(modifier = Modifier
-        .fillMaxWidth()
-        .height(height.dp)
-        .background(Color.LightGray))
-}
-
-@Composable
 private fun NavigateIconRow(text: String, icon: ImageVector) {
     Row(
         modifier = Modifier
@@ -163,6 +188,22 @@ private fun NavigateIconRow(text: String, icon: ImageVector) {
         Text(text, modifier = Modifier.padding(5.dp))
     }
 }
+
+@Composable
+private fun CustomLinearProgressBar(){
+    Column(modifier = Modifier.fillMaxWidth()) {
+        LinearProgressIndicator(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(15.dp)
+                .padding(0.dp, 5.dp),
+            progress = 0.7f,
+            trackColor = Color.LightGray,
+            color = Color.Red //progress color
+        )
+    }
+}
+
 
 @Preview(showBackground = true)
 @Composable
