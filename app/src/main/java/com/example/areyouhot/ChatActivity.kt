@@ -21,17 +21,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.areyouhot.model.Chat
+import com.example.areyouhot.model.chatData
 import com.example.areyouhot.view.theme.Divider
 import com.example.areyouhot.view.theme.TopBar
 import com.example.areyouhot.view.theme.Typography
-
-data class ChatData(
-    val userName: String,
-    val userImage: Int,
-    val userInfo: String,
-    val date: String,
-    val content: String
-)
 
 @Composable
 fun ChatActivity() {
@@ -46,12 +40,6 @@ fun ChatActivity() {
 
 @Composable
 fun ChatList() {
-    val chatData = listOf(
-        ChatData("WWf33", R.drawable.sample, "합정동", "3일 전", "네 잘쓰세요! ㅎㅎ"),
-        ChatData("JohnDoe", R.drawable.sample, "신촌", "2일 전", "거래 감사합니다!"),
-        ChatData("JaneSmith", R.drawable.sample, "강남", "어제", "언제 오실 예정인가요?")
-    )
-
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(8.dp),
@@ -69,7 +57,7 @@ fun ChatList() {
 }
 
 @Composable
-private fun ChatListItem(chatListData: ChatData) {
+private fun ChatListItem(chatListData: Chat) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
