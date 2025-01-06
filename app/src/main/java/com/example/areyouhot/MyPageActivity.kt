@@ -132,7 +132,6 @@ fun MyPageActivity() {
                 }
             }
             Box(modifier = Modifier.fillMaxWidth().height(8.dp).background(Color.Gray))
-
         }
     }
 }
