@@ -48,7 +48,7 @@ import androidx.compose.ui.unit.sp
 fun MyPageActivity() {
     Box(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier.fillMaxSize()) {
-            MyPageTopBar(text = "나의 당근", icon = Icons.Outlined.Settings)
+            MyPageTopBar(title = "나의 당근", icon = Icons.Outlined.Settings)
             Divider(1)
             Column(modifier = Modifier.fillMaxWidth().padding(12.dp)) {
                 Column(
