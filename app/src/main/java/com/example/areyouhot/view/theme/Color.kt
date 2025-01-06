@@ -1,4 +1,4 @@
-package com.example.areyouhot.ui.theme
+package com.example.areyouhot.view.theme
 
 import androidx.compose.ui.graphics.Color
 
