@@ -16,18 +16,27 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.outlined.AddCircle
+import androidx.compose.material.icons.outlined.Call
+import androidx.compose.material.icons.outlined.Create
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.LocationOn
+import androidx.compose.material.icons.outlined.Notifications
+import androidx.compose.material.icons.outlined.Place
+import androidx.compose.material.icons.outlined.ThumbUp
+import androidx.compose.material.icons.outlined.Warning
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -45,7 +54,7 @@ fun MyPageActivity() {
                 Text("나의 당근")
                 Icon(imageVector = Icons.Default.Settings, contentDescription = "settings")
             }
-            Box(modifier = Modifier.fillMaxWidth().height(1.dp).background(Color.Gray))
+            Divider(1)
             Column(modifier = Modifier.fillMaxWidth().padding(12.dp)) {
                 Column(
                     modifier = Modifier.fillMaxWidth(),
@@ -103,7 +112,7 @@ fun MyPageActivity() {
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         IconButton(
-                            onClick = {},
+                            onClick = {}
                         ) {
                             Image(
                                 painter = painterResource(id = R.drawable.sample),
@@ -119,7 +128,7 @@ fun MyPageActivity() {
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         IconButton(
-                            onClick = {},
+                            onClick = {}
                         ) {
                             Image(
                                 painter = painterResource(id = R.drawable.sample),
@@ -131,8 +140,42 @@ fun MyPageActivity() {
                     }
                 }
             }
-            Box(modifier = Modifier.fillMaxWidth().height(8.dp).background(Color.Gray))
+            Divider(8)
+            NavigateIconButton("내 동네 설정", Icons.Outlined.Place)
+            NavigateIconButton("동네 인증하기", Icons.Outlined.AddCircle)
+            NavigateIconButton("키워드 알림", Icons.Outlined.Notifications)
+            NavigateIconButton("모아보기", Icons.Outlined.Home)
+            Divider(8)
+            NavigateIconButton("동네생활 글", Icons.Outlined.Create)
+            NavigateIconButton("동네생활 댓글", Icons.Outlined.ThumbUp)
         }
+    }
+}
+
+@Composable
+private fun Divider(height: Int) {
+    Box(modifier = Modifier
+        .fillMaxWidth()
+        .height(height.dp)
+        .background(Color.LightGray))
+}
+
+@Composable
+private fun NavigateIconButton(text: String, icon: ImageVector) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .aspectRatio(8f),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Icon(
+            imageVector = icon,
+            contentDescription = icon.name,
+            modifier = Modifier
+                .aspectRatio(1f)
+                .padding(5.dp)
+        )
+        Text(text, modifier = Modifier.padding(5.dp))
     }
 }
 
