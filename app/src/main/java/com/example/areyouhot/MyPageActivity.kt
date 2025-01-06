@@ -3,6 +3,7 @@ package com.example.areyouhot
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Settings
@@ -43,16 +45,16 @@ fun MyPageActivity() {
                 Text("나의 당근")
                 Icon(imageVector = Icons.Default.Settings, contentDescription = "settings")
             }
-            Column(modifier = Modifier.fillMaxWidth()) {
+            Box(modifier = Modifier.fillMaxWidth().height(1.dp).background(Color.Gray))
+            Column(modifier = Modifier.fillMaxWidth().padding(12.dp)) {
                 Column(
-                    modifier = Modifier.fillMaxWidth().aspectRatio(2f).padding(12.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.SpaceEvenly
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Row(modifier = Modifier.fillMaxWidth().aspectRatio(3f)) {
+                    Row(modifier = Modifier.fillMaxWidth().aspectRatio(4f)) {
                         IconButton(
                             onClick = {},
-                            modifier = Modifier.fillMaxHeight().padding(15.dp).aspectRatio(1f)
+                            modifier = Modifier.fillMaxHeight().aspectRatio(1f)
                         ) {
                             Image(
                                 painter = painterResource(id = R.drawable.sample),
@@ -70,13 +72,12 @@ fun MyPageActivity() {
                             Text("역삼동 #18", modifier = Modifier.fillMaxWidth(), fontSize = 15.sp)
                         }
                     }
-                    Box(modifier = Modifier.fillMaxHeight().border(width = 1.dp, color = Color.LightGray), contentAlignment = Alignment.Center) {
-                        Text("프로필 보기", modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center, fontWeight = FontWeight.Bold)
+                    Box(modifier = Modifier.fillMaxWidth().aspectRatio(7f).border(width = 1.dp, color = Color.LightGray).clickable {  }, contentAlignment = Alignment.Center) {
+                        Text("프로필 보기", textAlign = TextAlign.Center, fontWeight = FontWeight.Bold)
                     }
-
                 }
                 Row(
-                    modifier = Modifier.fillMaxWidth().aspectRatio(3f).padding(12.dp),
+                    modifier = Modifier.fillMaxWidth().aspectRatio(3f),
                     horizontalArrangement = Arrangement.SpaceEvenly,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -128,9 +129,10 @@ fun MyPageActivity() {
                         }
                         Text("관심목록")
                     }
-
                 }
             }
+            Box(modifier = Modifier.fillMaxWidth().height(8.dp).background(Color.Gray))
+
         }
     }
 }
