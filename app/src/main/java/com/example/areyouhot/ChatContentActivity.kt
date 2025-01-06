@@ -28,7 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.areyouhot.ui.theme.Divider
+import com.example.areyouhot.view.theme.Divider
 
 data class Message(
     val id: Int,
