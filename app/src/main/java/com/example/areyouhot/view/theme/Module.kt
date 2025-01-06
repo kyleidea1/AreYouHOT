@@ -1,26 +1,24 @@
-package com.example.areyouhot.ui.theme
+package com.example.areyouhot.view.theme
 
-import androidx.compose.foundation.Canvas
+// 기본 import문들
+import androidx.annotation.DrawableRes
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.remember
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.runtime.staticCompositionLocalOf
-import androidx.compose.ui.input.pointer.pointerInput
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlin.math.cos
-import kotlin.math.sin
-import kotlin.random.Random
+import com.example.areyouhot.R
 
 @Composable
 fun Divider(height: Int) {
@@ -28,6 +26,42 @@ fun Divider(height: Int) {
         .fillMaxWidth()
         .height(height.dp)
         .background(Color.LightGray))
+}
+
+@Composable
+fun ProfileImage(
+    @DrawableRes imageRes: Int,
+    modifier: Modifier = Modifier,
+    size: Dp = 100.dp
+) {
+    Box(
+        modifier = modifier
+            .size(size)
+            .clip(CircleShape)
+    ) {
+        Image(
+            painter = painterResource(id = imageRes),
+            contentDescription = "Profile Image",
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.fillMaxSize()
+        )
+    }
+}
+
+sealed class Tier(
+    @DrawableRes val imageRes: Int,
+    val tierName: String,
+    val leaguePoint: Int
+) {
+    object Bronze : Tier(R.drawable.tier_bronze, "브론즈", 100)
+    object Silver : Tier(R.drawable.tier_silver, "실버", 200)
+    object Gold : Tier(R.drawable.tier_gold, "골드", 300)
+    object Platinum : Tier(R.drawable.tier_platinum, "플래티넘", 400)
+    object Diamond : Tier(R.drawable.tier_diamond, "다이아몬드", 500)
+
+    companion object {
+        fun getAllTiers() = listOf(Bronze, Silver, Gold, Platinum, Diamond)
+    }
 }
 
 //data class FireParticle(
