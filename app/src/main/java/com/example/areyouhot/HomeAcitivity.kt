@@ -48,6 +48,7 @@ fun MatchList() {
         }
     }
 }
+
 //@Composable
 //fun MatchList(matches: List<Match>) { // Match는 데이터 클래스
 //    LazyColumn(
