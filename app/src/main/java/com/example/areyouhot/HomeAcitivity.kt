@@ -20,7 +20,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Send
@@ -44,7 +43,7 @@ import com.example.areyouhot.view.theme.Typography
 fun HomeActivity(navController: NavController) {  // NavController 추가
     Box(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier.fillMaxSize()) {
-            TitleBar()
+            TitleBar(navController)
             MatchList(
                 matches = sampleMatches,
                 navController = navController  // NavController 전달
@@ -105,7 +104,7 @@ private fun MatchItem(
 }
 
 @Composable
-private fun TitleBar() {
+private fun TitleBar(navController: NavController) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -134,7 +133,7 @@ private fun TitleBar() {
             }
             Row() {
                 IconButton(
-                    onClick = {},
+                    onClick = { navController.navigate("search")},
                     modifier = Modifier
                         .fillMaxHeight()
                         .aspectRatio(1f)

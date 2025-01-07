@@ -35,6 +35,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.areyouhot.view.SearchActivity
 import com.example.areyouhot.view.theme.MainRed
 
 sealed class BottomNavItem(val route: String, val icon: ImageVector, val label: String) {
@@ -77,6 +78,9 @@ fun NavigationGraph(navController: NavHostController) {
         }
         composable("match_details/{matchIndex}") {
             MatchDetailsActivity()
+        }
+        composable("search") {
+            SearchActivity()
         }
     }
 }
