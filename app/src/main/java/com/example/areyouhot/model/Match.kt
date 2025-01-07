@@ -1,6 +1,8 @@
 package com.example.areyouhot.model
 
+import android.os.Build
 import androidx.annotation.DrawableRes
+import androidx.annotation.RequiresApi
 import com.example.areyouhot.R
 import com.example.areyouhot.view.theme.Tier
 import java.time.LocalDateTime
@@ -18,34 +20,7 @@ data class Match(
     val views: Int
 )
 
-// 격투기 종목을 위한 enum class
-enum class MartialArtType {
-    BOXING,
-    KICKBOXING,
-    WRESTLING,
-    JIU_JITSU,
-    MMA,
-    MUAY_THAI;
-
-    fun toDisplayName(): String = when(this) {
-        BOXING -> "복싱"
-        KICKBOXING -> "킥복싱"
-        WRESTLING -> "레슬링"
-        JIU_JITSU -> "주짓수"
-        MMA -> "종합격투기"
-        MUAY_THAI -> "무에타이"
-    }
-}
-
-// 방장 정보를 위한 데이터 클래스
-data class User(
-    val id: String = UUID.randomUUID().toString(),
-    val nickname: String,
-    @DrawableRes val profileImage: Int,
-    val tier: Tier
-)
-
-// 사용 예시
+@RequiresApi(Build.VERSION_CODES.O)
 val sampleMatches = listOf(
     Match(
         thumbnailImage = R.drawable.sample,
@@ -55,7 +30,8 @@ val sampleMatches = listOf(
         host = User(
             nickname = "복싱왕",
             profileImage = R.drawable.sample,
-            tier = Tier.Gold
+            tier = Tier.Gold,
+            address = "장전동"
         ),
         body = "드루와드루와드루와드루와드루와드루와드루와드루와드루와드루와드루와드루와드루와드루와드루와드루와드루와드루와드루와드루와드루와드루와드루와드루와",
         like = 12,
@@ -69,7 +45,8 @@ val sampleMatches = listOf(
         host = User(
             nickname = "주짓수마스터",
             profileImage = R.drawable.sample,
-            tier = Tier.Platinum
+            tier = Tier.Platinum,
+            address = "구서동"
         ),
         body = "드루와드루와드루와드루와드루와드루와드루와드루와드루와드루와드루와드루와드루와드루와드루와드루와드루와드루와드루와드루와드루와드루와드루와드루와",
         like = 12,
