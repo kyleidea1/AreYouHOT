@@ -54,8 +54,10 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import com.example.areyouhot.MatchList
 import com.example.areyouhot.model.User
-import com.example.areyouhot.model.chatData
+import com.example.areyouhot.model.sampleMatches
 import com.example.areyouhot.model.sampleUser
 import com.example.areyouhot.model.sampleUserList
 import com.example.areyouhot.view.theme.BackButton
@@ -63,9 +65,22 @@ import com.example.areyouhot.view.theme.Divider
 import com.example.areyouhot.view.theme.Typography
 
 @Composable
-fun SearchActivity() {
+fun SearchActivity(
+    navController: NavController
+) {
     val searchQuery = remember { mutableStateOf("") }
     val tabLayoutState = remember { mutableIntStateOf(0) }
+    val filteredMatches = remember(searchQuery.value, sampleMatches) {
+        sampleMatches.filter { match ->
+            match.toString().contains(searchQuery.value, ignoreCase = true)
+        }
+    }
+
+    val filteredEnemies = remember(searchQuery.value, sampleUserList) {
+        sampleUserList.filter { user ->
+            user.nickname.contains(searchQuery.value, ignoreCase = true)
+        }
+    }
 
     Box(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier.fillMaxSize()) {
@@ -77,8 +92,12 @@ fun SearchActivity() {
                 SearchBar(
                     value = searchQuery.value,
                     onValueChange = { searchQuery.value = it },
-                    onSearch = { searchQuery ->
-                        Log.d("SEARCH", "SearchQuery:${searchQuery}")
+                    onSearch = { query ->
+                        searchQuery.value = query
+                        when (tabLayoutState.intValue) {
+                            0 -> Log.d("SEARCH", "Matches filtered: ${filteredMatches.size}")
+                            1 -> Log.d("SEARCH", "Enemies filtered: ${filteredEnemies.size}")
+                        }
                     }
                 )
             }
@@ -111,10 +130,9 @@ fun SearchActivity() {
                 )
             }
 
-            // 탭 컨텐츠
             when (tabLayoutState.intValue) {
-                0 -> EnemyList(enemyList = sampleUserList)
-                1 -> EmptyScreen(1)
+                0 -> MatchList(filteredMatches, navController = navController)
+                1 -> EnemyList(enemyList = filteredEnemies)
             }
         }
     }

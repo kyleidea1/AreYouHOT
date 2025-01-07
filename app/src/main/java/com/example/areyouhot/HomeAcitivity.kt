@@ -1,6 +1,8 @@
 package com.example.areyouhot
 
 import android.content.Context
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -39,6 +41,7 @@ import com.example.areyouhot.model.sampleMatches
 import com.example.areyouhot.view.theme.MainRed
 import com.example.areyouhot.view.theme.Typography
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun HomeActivity(navController: NavController) {  // NavController 추가
     Box(modifier = Modifier.fillMaxSize()) {
