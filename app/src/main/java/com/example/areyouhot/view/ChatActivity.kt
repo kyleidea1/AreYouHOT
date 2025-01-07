@@ -1,4 +1,4 @@
-package com.example.areyouhot
+package com.example.areyouhot.view
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement

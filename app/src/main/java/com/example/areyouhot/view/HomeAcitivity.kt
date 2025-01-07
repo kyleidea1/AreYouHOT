@@ -1,4 +1,4 @@
-package com.example.areyouhot
+package com.example.areyouhot.view
 
 import android.content.Context
 import android.os.Build
@@ -36,6 +36,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.areyouhot.R
 import com.example.areyouhot.model.Match
 import com.example.areyouhot.model.sampleMatches
 import com.example.areyouhot.view.theme.MainRed

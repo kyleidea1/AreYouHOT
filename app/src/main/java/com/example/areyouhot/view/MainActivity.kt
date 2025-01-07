@@ -1,4 +1,4 @@
-package com.example.areyouhot
+package com.example.areyouhot.view
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
