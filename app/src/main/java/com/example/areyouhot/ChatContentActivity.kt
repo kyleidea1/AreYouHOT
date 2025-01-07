@@ -22,7 +22,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -72,7 +71,9 @@ fun ChatContentActivity() {
                 MessageList()
             }
             Row(
-                modifier = Modifier.fillMaxWidth().padding(8.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceAround
             ) {
@@ -91,18 +92,16 @@ fun ChatContentActivity() {
 
 @Composable
 fun MessageList() {
-    val messages = remember { messageData }
-
     LazyColumn(
         modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.Top
     ) {
         items(
-            count = messages.size,
-            key = { index -> messages[index].id },
-            contentType = { index -> messages[index] }
+            count = messageData.size,
+            key = { index -> messageData[index].id },
+            contentType = { index -> messageData[index] }
         ) { index ->
-            val message = messages[index]
+            val message = messageData[index]
             MessageItem(message)
         }
     }
