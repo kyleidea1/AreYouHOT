@@ -32,6 +32,10 @@ import com.example.areyouhot.model.messageData
 import com.example.areyouhot.view.theme.Divider
 import com.example.areyouhot.view.theme.MainRed
 import com.example.areyouhot.view.theme.Typography
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 
 @Composable
 fun ChatContentActivity() {
@@ -70,21 +74,7 @@ fun ChatContentActivity() {
                 }
                 MessageList()
             }
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceAround
-            ) {
-                Icon(imageVector = Icons.Outlined.Add, contentDescription = "add")
-                OutlinedTextField(
-                    value = "",
-                    onValueChange = { },
-                    label = { Text("메시지 입력", style = Typography.bodyLarge) }
-                )
-                Icon(imageVector = Icons.Outlined.Send, contentDescription = "send")
-            }
+            MessageWritingScreen()
         }
 
     }
@@ -127,6 +117,31 @@ fun MessageItem(message: Message) {
         }
         Spacer(modifier = Modifier.padding(4.dp))
         if (!message.isMine) Text(message.timestamp, style = Typography.bodySmall, color = Color.Gray)
+    }
+}
+
+@Composable
+fun MessageWritingScreen() {
+    var message by remember { mutableStateOf("") }
+
+    MessageWritingContent(message = message, onMessageChange = { message = it })
+}
+
+@Composable
+fun MessageWritingContent(message: String, onMessageChange: (String) -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceAround
+    ) {
+        Icon(imageVector = Icons.Outlined.Add, contentDescription = "add")
+        OutlinedTextField(
+            value = message,
+            onValueChange = onMessageChange,
+        )
+        Icon(imageVector = Icons.Outlined.Send, contentDescription = "send")
     }
 }
 
