@@ -55,7 +55,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.areyouhot.MatchList
 import com.example.areyouhot.model.User
 import com.example.areyouhot.model.sampleMatches
 import com.example.areyouhot.model.sampleUser

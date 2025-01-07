@@ -1,4 +1,4 @@
-package com.example.areyouhot
+package com.example.areyouhot.view
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
@@ -34,7 +34,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.example.areyouhot.R
 import com.example.areyouhot.view.theme.Divider
 import com.example.areyouhot.view.theme.MainRed
 import com.example.areyouhot.view.theme.TopBar
